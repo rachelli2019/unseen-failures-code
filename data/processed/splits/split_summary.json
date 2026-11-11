@@ -1,0 +1,21 @@
+{
+  "method": "contamination-based (sessions used to quantitatively compare candidate prompts/methods against each other on that exact set), not stratified/grouped",
+  "sources": {
+    "taxonomy_scale40_prompt_variant_comparison": "data/processed/splits/dev_sample_ids.json"
+  },
+  "excluded_as_not_contamination": [
+    "stage_a 15-session smoke sample (Pass 1) - found a prompt bug and fixed it with a general rule applied to every session, not content tuned to these 15 specifically",
+    "stage_a 47-session validation subsample (model selection, not prompt tuning; model then run uniformly over all 1035 sessions)",
+    "taxonomy 25-session seed catalog (approach never adopted/evaluated)",
+    "taxonomy 10-session pilot (used only by the deleted abandoned sequential/luna approach)"
+  ],
+  "per_source_session_counts": {
+    "taxonomy_scale40_prompt_variant_comparison": 40
+  },
+  "total_contaminated_dev": 40,
+  "total_test": 995,
+  "total_population": 1035,
+  "sessions_that_moved_from_old_test_to_new_dev": 0,
+  "dev_path": "data/processed/splits/swe_chat_dev.parquet",
+  "test_path": "data/processed/splits/swe_chat_test.parquet"
+}

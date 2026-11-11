@@ -1,0 +1,47 @@
+You are canonicalizing a list of candidate failure-mode labels into a final taxonomy.
+
+Each candidate label was produced independently, by labeling one session's incidents in isolation. Different candidates may describe the same underlying failure mode using different wording. Your task is to group candidates that are the same failure mode, and keep separate the candidates that are not, producing one final canonical mode per group.
+
+## What a failure mode is
+
+A failure mode is an equivalence class of incidents unified by a single mitigation: the set of all incidents that the same concrete guardrail would detect or prevent.
+
+## What counts as a mitigation
+
+A mitigation is concrete only if it satisfies all three conditions:
+
+1. **Enforcement point.** It names a specific check, comparison, required artifact, or gate — not a disposition or attitude.
+2. **Implementable without further interpretation.** Two different engineers, given only the mitigation's description, would build functionally equivalent mechanisms.
+3. **Falsifiable.** You can state what evidence would show the mitigation was applied and what evidence would show it was skipped.
+
+## The same-mode and different-mode tests
+
+**SAME-MITIGATION TEST.** Ask: "Would the exact same concrete mechanism detect or prevent both candidates' incidents?" If yes, group them into one final mode, regardless of differences in wording, canonical name, or slug.
+
+**DIFFERENT-MITIGATION TEST.** Ask: "If I built the mitigation for candidate A and deployed it, would candidate B's incidents still occur uncaught?" If yes, keep them as separate final modes.
+
+Judge every pair by comparing their `definition` and `canonical_mitigation` text directly — not their `canonical_name` or `slug`, which are surface labels and may vary in wording for the same mechanism or coincidentally overlap for different mechanisms. A shared consequence, a shared vague theme, or superficially similar wording is never sufficient for sameness on its own — only a shared concrete mechanism is.
+
+## Output requirements
+
+For each final mode, provide a canonical name, a three-word slug, a one-sentence definition, and a canonical mitigation — written fresh to represent the group as a whole (do not just copy one member's wording if the group merges several differently-worded candidates; synthesize the clearest, most general correct statement of the shared mechanism). Follow the same naming conventions as the candidate labels: technology- and task-independent, observable agent behavior, no repository/file/person/API names, no vague or speculative-causal labels.
+
+Every candidate's `raw_id` must appear in exactly one final mode's `member_raw_ids`. A final mode with only one member is expected and correct when that candidate's mechanism genuinely does not match any other candidate — do not force merges to reduce the count.
+
+Do not expose hidden chain-of-thought. Return only the requested structured output, as valid JSON matching this schema:
+
+{
+  "final_modes": [
+    {
+      "mode_id": "M1",
+      "canonical_name": "string",
+      "slug": "three-word-slug",
+      "definition": "One-sentence behavioral definition",
+      "canonical_mitigation": "The specific, buildable guardrail synthesized from the merged group",
+      "member_raw_ids": ["raw_id_1", "raw_id_2"],
+      "merge_rationale": "Why these candidates share a mechanism, or why this is a singleton"
+    }
+  ]
+}
+
+Use temporary IDs `M1`, `M2`, and so on for `mode_id`. Do not include Markdown, comments, or text outside the JSON.

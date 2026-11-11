@@ -1,0 +1,41 @@
+{
+  "discovery": {
+    "backend": "fixed_primary",
+    "taxonomy_json": "data/taxonomy/primary_test_taxonomy.json",
+    "population_json": "data/population/test_population.json"
+  },
+  "label_name": "primary_oneshot_lambda_grid_extra_arms_fullpop",
+  "n_bootstrap_samples": 3000,
+  "n_trials": 1000,
+  "n_workers": 8,
+  "seed": 888,
+  "alpha": 0.05,
+  "binary_search_iterations": 20,
+  "arms": [
+    {
+      "name": "single_lambda_0p1",
+      "lambda_values": [
+        0.1
+      ],
+      "lambda_weights": [
+        1.0
+      ],
+      "restart": "every_time"
+    },
+    {
+      "name": "single_lambda_0p5",
+      "lambda_values": [
+        0.5
+      ],
+      "lambda_weights": [
+        1.0
+      ],
+      "restart": "every_time"
+    },
+    {
+      "name": "uniform_K100_norestart",
+      "uniform_grid_points": 100,
+      "restart": "none"
+    }
+  ]
+}

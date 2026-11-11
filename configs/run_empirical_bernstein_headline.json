@@ -1,0 +1,12 @@
+{
+  "headline_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_K100/combined/trajectories.npz",
+  "no_restart_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_extra_arms/combined/trajectories.npz",
+  "gt_npz": "artifacts/reports/e_value_empirical_validation/primary_oneshot_fixed_fullpop.npz",
+  "output_dir": "data/plots/full_population/primary_oneshot_fixed/empirical_bernstein",
+  "artifact_dir": "artifacts/empirical_bernstein/primary_fixed_fullpop",
+  "alpha": 0.05,
+  "rho": 100.0,
+  "first_prediction": 0.5,
+  "thresholds": [0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14],
+  "batch_size": 50
+}

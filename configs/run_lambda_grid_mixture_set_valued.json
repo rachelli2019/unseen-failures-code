@@ -1,0 +1,29 @@
+{
+  "discovery": {
+    "backend": "fixed_set_valued",
+    "taxonomy_json": "data/taxonomy/set_valued_test_taxonomy.json",
+    "population_json": "data/population/test_population.json"
+  },
+  "label_name": "set_valued_oneshot_fixed_lambda_grid_mixture_fullpop",
+  "n_bootstrap_samples": 3000,
+  "n_trials": 1000,
+  "n_workers": 8,
+  "seed": 888,
+  "alpha": 0.05,
+  "binary_search_iterations": 20,
+  "arms": [
+    {
+      "name": "uniform_K100",
+      "uniform_grid_points": 100
+    },
+    {
+      "name": "single_lambda_0p25",
+      "lambda_values": [
+        0.25
+      ],
+      "lambda_weights": [
+        1.0
+      ]
+    }
+  ]
+}

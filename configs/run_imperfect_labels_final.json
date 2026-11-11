@@ -1,0 +1,26 @@
+{
+  "inputs": "data/imperfect_labels/input_snapshot",
+  "sampling": "uniform_with_replacement",
+  "alpha": 0.05,
+  "rho": 0.1,
+  "epsilons": [
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2
+  ],
+  "bet_points": 100,
+  "seed": 888,
+  "n_trials": 1000,
+  "n_draws": 10000,
+  "workers": 4,
+  "plot_stride": 25,
+  "library": "artifacts/imperfect_labels_reset/weighted_restart.so",
+  "output_dir": "artifacts/imperfect_labels_reset/run_1000trials_10000draws_r010",
+  "methods": [
+    "perfect",
+    "bpac",
+    "ppi"
+  ]
+}
