@@ -1,0 +1,9 @@
+{
+  "source_run": "artifacts/fixed_q_primary/length_half_v1/stopping_eps_0p1_0p2_0p3",
+  "epsilons": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "command_note": "run_fixed_q_stopping.py --epsilons; exact threshold evaluations"
+}

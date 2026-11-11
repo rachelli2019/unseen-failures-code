@@ -1,0 +1,15 @@
+{
+  "population_json": "data/population/test_population.json",
+  "taxonomy_json": "data/taxonomy/primary_test_taxonomy.json",
+  "labels_jsonl": "data/failure_modes/primary_test993.jsonl",
+  "sessions_parquet": "data/processed/swe_chat_sessions_judge_ready_full.parquet",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "seed": 888,
+  "alpha": 0.05,
+  "lambda_grid_points": 100,
+  "stopping_epsilons": [0.1, 0.05, 0.01],
+  "plot_grid_intervals": 500,
+  "workers": 4,
+  "output_dir": "artifacts/fixed_q_primary/length_half_v1"
+}

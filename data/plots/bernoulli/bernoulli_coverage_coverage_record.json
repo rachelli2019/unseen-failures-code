@@ -1,0 +1,17 @@
+{
+  "plot_file": "bernoulli_coverage.png",
+  "setting": "Bernoulli(p=0.05)",
+  "n_trials": 10000,
+  "horizon": 10000,
+  "provenance": "recorded during plotting",
+  "arms": [
+    {
+      "method": "Anytime-Valid UCB (ours)",
+      "source_npz": "artifacts/lambda_grid_mixture/bernoulli_h10000_s888_K25/combined/trajectories.npz",
+      "array_key": "coverage",
+      "coverage": 0.9587,
+      "violation_count": 413,
+      "target_coverage": 0.95
+    }
+  ]
+}

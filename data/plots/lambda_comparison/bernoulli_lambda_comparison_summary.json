@@ -1,0 +1,97 @@
+{
+  "setting": "I.i.d. Bernoulli, p = 0.05",
+  "prefix": "bernoulli",
+  "grid_npz": "artifacts/lambda_grid_mixture/bernoulli_s888_K100_v2/combined/trajectories.npz",
+  "closed_form_npz": "artifacts/closed_form_mixture/bernoulli_s888_cf2/combined/trajectories.npz",
+  "fixed_npz": "artifacts/lambda_grid_mixture/bernoulli_s888_K100_v2/combined/trajectories.npz",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "report_times": [
+    100,
+    300,
+    1000,
+    2000,
+    3000
+  ],
+  "oracle_mean": [
+    0.05000000000000001,
+    0.05000000000000001,
+    0.05000000000000001,
+    0.05000000000000001,
+    0.05000000000000001
+  ],
+  "arms": {
+    "Fixed $\\lambda = 0.25$": {
+      "source": "artifacts/lambda_grid_mixture/bernoulli_s888_K100_v2/combined/trajectories.npz:bound__single_lambda_0p25",
+      "simultaneous_coverage": 0.963,
+      "mean": [
+        0.1854362735748291,
+        0.09898712825775147,
+        0.06989296436309815,
+        0.06337496280670166,
+        0.06118300724029541
+      ],
+      "ratio_to_grid": [
+        1.4455877785135836,
+        1.058083181624661,
+        0.9476006075043176,
+        0.9518137328836025,
+        0.9638698675177171
+      ]
+    },
+    "$\\lambda$ grid, $K=100$": {
+      "source": "artifacts/lambda_grid_mixture/bernoulli_s888_K100_v2/combined/trajectories.npz:bound__uniform_K100",
+      "simultaneous_coverage": 0.967,
+      "mean": [
+        0.13242080593109132,
+        0.09419392967224122,
+        0.07377070617675781,
+        0.06656810474395752,
+        0.0634636344909668
+      ],
+      "ratio_to_grid": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "Closed-form $\\lambda$": {
+      "source": "artifacts/closed_form_mixture/bernoulli_s888_cf2/combined/trajectories.npz:bound__closed_form_lambda",
+      "simultaneous_coverage": 1.0,
+      "mean": [
+        0.1792280073172309,
+        0.12053787231521204,
+        0.08745820236288562,
+        0.07600807571495931,
+        0.0710812683114047
+      ],
+      "ratio_to_grid": [
+        1.3686658597907209,
+        1.28634478594932,
+        1.1873009013683216,
+        1.1424972210073023,
+        1.120421078033672
+      ]
+    },
+    "Best in hindsight (cheating)": {
+      "source": "artifacts/closed_form_mixture/bernoulli_s888_cf2/combined/trajectories.npz:bound__closed_form_lambda_cheating",
+      "simultaneous_coverage": 0.892,
+      "mean": [
+        0.12085928821639547,
+        0.08746300125204577,
+        0.0694601602562932,
+        0.0632084970482979,
+        0.06055895996181638
+      ],
+      "ratio_to_grid": [
+        0.9069709611646523,
+        0.9276278085966889,
+        0.9412991219752797,
+        0.9494055056957715,
+        0.9541518952402648
+      ]
+    }
+  }
+}

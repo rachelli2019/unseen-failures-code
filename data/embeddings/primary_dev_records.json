@@ -1,0 +1,226 @@
+[
+  {
+    "raw_id": "03faf6a3-6f46-4d64-ae4b-b4adae37423b",
+    "session_id": "03faf6a3-6f46-4d64-ae4b-b4adae37423b",
+    "canonical_name": "Unapproved deviation from an explicitly approved implementation plan",
+    "definition": "The agent discovers that an approved action is inappropriate but substitutes a different implementation and merges it without first obtaining approval for the revised plan.",
+    "canonical_mitigation": "Before editing, compare intended changes against the approved plan; if new evidence invalidates any requested action or requires additional tests or scope, stop and present a revised plan and explicit rationale for approval before proceeding."
+  },
+  {
+    "raw_id": "06f2740c-cc70-4b27-899a-b9a587939655",
+    "session_id": "06f2740c-cc70-4b27-899a-b9a587939655",
+    "canonical_name": "Failure to persist environment activation outside a transient subprocess",
+    "definition": "The agent activates an installed runtime only inside a child shell, leaving the invoking environment on the old runtime.",
+    "canonical_mitigation": "After installing the runtime, configure the relevant shell startup file or persistent PATH, then verify `node`, `npx`, and their resolved paths in a fresh shell without prepending an inline activation command."
+  },
+  {
+    "raw_id": "0cc8ab06-c62e-4d49-96eb-43f643d6d036",
+    "session_id": "0cc8ab06-c62e-4d49-96eb-43f643d6d036",
+    "canonical_name": "Declaring a runtime fix successful after build-only verification",
+    "definition": "The agent presented a runtime integration issue as resolved after confirming only that the project built, without executing or reporting the requested end-to-end reproduction.",
+    "canonical_mitigation": "For runtime bug fixes, require the agent to run the supplied reproduction command and verify the expected observable behavior before claiming success; if the reproduction cannot run, explicitly report that the fix remains unverified."
+  },
+  {
+    "raw_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "session_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "canonical_name": "Modifying implementation despite an explicit plan-only constraint",
+    "definition": "The agent made and committed code changes after the user explicitly requested a planning document first and instructed it not to modify code.",
+    "canonical_mitigation": "When a user requests plan-only work, activate a read-only tool policy that blocks Edit, Write, and code commits until the user explicitly approves implementation."
+  },
+  {
+    "raw_id": "0d35e35d-5cc8-4a89-83cb-a0b5f261c87d",
+    "session_id": "0d35e35d-5cc8-4a89-83cb-a0b5f261c87d",
+    "canonical_name": "Failure to execute an explicitly authorized action",
+    "definition": "The agent responds to a direct, already-approved execution request by proposing a plan and requesting redundant confirmation instead of performing the action.",
+    "canonical_mitigation": "Track whether the latest user message explicitly authorizes execution; when it does, invoke the requested workflow immediately and only pause for confirmation if a newly discovered destructive or scope-changing action requires separate approval."
+  },
+  {
+    "raw_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d",
+    "session_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d",
+    "canonical_name": "Failure to run explicitly requested end-to-end verification",
+    "definition": "The agent performed build checks but omitted the requested runtime reproduction and regression checks needed to establish that the reported behavior was fixed.",
+    "canonical_mitigation": "Use a verification checklist derived from the user's acceptance steps and require each runnable behavioral check to pass—or be explicitly reported as blocked—before considering the implementation complete."
+  },
+  {
+    "raw_id": "16434766-7390-4250-943d-30f57e988f4a",
+    "session_id": "16434766-7390-4250-943d-30f57e988f4a",
+    "canonical_name": "Failure to conclude a requested setup after executing the configuration command",
+    "definition": "The agent continued extended exploratory work after running the relevant setup command, without promptly reporting whether the requested configuration succeeded or failed.",
+    "canonical_mitigation": "After running a configuration command, immediately inspect its exit status and perform one bounded verification; then report success or the specific blocking error, and only begin broader discovery if that verification fails."
+  },
+  {
+    "raw_id": "21851bd5-d25d-4a6d-9731-6cf5fec6507d",
+    "session_id": "21851bd5-d25d-4a6d-9731-6cf5fec6507d",
+    "canonical_name": "Prolonged investigation without an interim answer to the user's question",
+    "definition": "The agent continued extensive tool-based investigation instead of promptly giving a bounded answer, progress update, or proposed next step for an actionable user question.",
+    "canonical_mitigation": "Enforce a time or tool-call budget for investigations and require an interim response summarizing current findings, uncertainties, and the next proposed action when that budget is reached."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Dropping structured conversation fields during data adaptation",
+    "definition": "The agent reused or implemented a conversation adapter that retained only basic message fields and silently discarded structured tool-call metadata required for correct downstream training.",
+    "canonical_mitigation": "Add schema-preservation tests using representative agentic conversations that assert `tool_calls`, `tool_call_id`, and `name` survive adaptation and appear in the rendered training text before launching any training job."
+  },
+  {
+    "raw_id": "26796def-dca5-4567-a1ea-c01ae4fe61e9",
+    "session_id": "26796def-dca5-4567-a1ea-c01ae4fe61e9",
+    "canonical_name": "Failure to use available in-session conversation history",
+    "definition": "The agent claims it cannot access prior messages or asks for clarification even though the requested messages are present in the current session context.",
+    "canonical_mitigation": "Before answering a conversation-recall question, inspect the current transcript, distinguish in-session messages from prior-session memory, and return the matching visible turns in chronological or requested order."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Publishing evaluation summaries without reconciling counts and provenance",
+    "definition": "The agent posts evaluation tables or statistical claims before reconciling shard mappings, task totals, denominators, and reference-score provenance against the underlying artifacts.",
+    "canonical_mitigation": "Generate evaluation Markdown from a single aggregation script that maps tasks to shards, deduplicates trials, records source URLs, and blocks publication unless assertions verify expected task-set equality, shard totals equal the aggregate, percentages match numerators and denominators, and every reference statistic has a reproducible calculation."
+  },
+  {
+    "raw_id": "606f4961-fa58-49f9-b523-a5f0795a4e17",
+    "session_id": "606f4961-fa58-49f9-b523-a5f0795a4e17",
+    "canonical_name": "Implementing multi-track support through an API that omits embedded tracks",
+    "definition": "The agent implemented track selection using a playback API that did not enumerate all audio tracks present in the target stream, causing the selector to remain unavailable.",
+    "canonical_mitigation": "Before building the selector, test the chosen track-enumeration API with a representative multi-audio live stream and compare its results against a reference player; if tracks are omitted, switch to a playback or demuxing API that exposes embedded tracks or explicitly report the unsupported stream format."
+  },
+  {
+    "raw_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa",
+    "session_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa",
+    "canonical_name": "Using non-platform-aware modifier matching for keyboard shortcuts",
+    "definition": "The agent treated Control and Command as interchangeable shortcut modifiers instead of allowing only the platform-specific primary modifier.",
+    "canonical_mitigation": "Route every shortcut handler through a shared platform-aware modifier predicate—Meta only on macOS and Control only on Windows/Linux—and add event-matrix tests covering Meta, Control, Alt, and Shift combinations."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Under-scoped fixes without auditing analogous code paths and invariants",
+    "definition": "The agent repeatedly fixed the reported location without first inventorying equivalent implementations, related endpoint semantics, and cross-platform or CI invariants, causing recurring reviewer findings and reversals.",
+    "canonical_mitigation": "Before editing, require a documented impact matrix produced from repository-wide searches that lists every analogous call site, endpoint family, policy implementation, platform variant, and local/CI counterpart; review that matrix with the user and add contract tests for each classification before implementation."
+  },
+  {
+    "raw_id": "6fee0305-5759-40cc-9398-b1f4fe609795",
+    "session_id": "6fee0305-5759-40cc-9398-b1f4fe609795",
+    "canonical_name": "Modification of files outside an explicit allowlist",
+    "definition": "The agent edited files that the user explicitly prohibited it from touching.",
+    "canonical_mitigation": "Enforce a path allowlist at every file-write operation, blocking edits unless the target is one of the user-authorized files."
+  },
+  {
+    "raw_id": "706d579b-cd91-4244-948e-2268c5094c7e",
+    "session_id": "706d579b-cd91-4244-948e-2268c5094c7e",
+    "canonical_name": "Double-counting baseline state during rename handling",
+    "definition": "Rename-aware delta logic records the same pre-rename baseline under both the old and new paths, allowing a real increase to be canceled by a phantom decrease.",
+    "canonical_mitigation": "Model each rename as a single identity transfer that assigns the old baseline count only to the destination path, and add a regression test where a renamed item increases from one violation to two and must be rejected."
+  },
+  {
+    "raw_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc",
+    "session_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc",
+    "canonical_name": "Claiming completion without modifying the explicitly required file",
+    "definition": "The agent reported implementing a requested change even though the recorded touched files do not include the file that the user explicitly required it to modify.",
+    "canonical_mitigation": "Before reporting completion, run a targeted diff check that asserts the required path appears in the diff and that the requested configuration block is absent from that file."
+  },
+  {
+    "raw_id": "83490825-3426-49df-bdc5-9592ee06eb7a",
+    "session_id": "83490825-3426-49df-bdc5-9592ee06eb7a",
+    "canonical_name": "Failure to produce an explicitly required documentation artifact",
+    "definition": "The agent implemented code changes but omitted the documentation file and reference section explicitly included in the requested plan.",
+    "canonical_mitigation": "Maintain a deliverables checklist derived from the plan and, before stopping, compare every required file against the actual touched-file list, blocking completion when a required artifact such as documentation is absent."
+  },
+  {
+    "raw_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "session_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "canonical_name": "Recommending schema synchronization as a full data reset",
+    "definition": "The agent incorrectly presents a schema synchronization command as guaranteed to delete all existing database data and recreate every table.",
+    "canonical_mitigation": "Before recommending a destructive reset, inspect the actual package script and command semantics; use an explicit transaction-wrapped truncate or database recreation procedure, then query table row counts to verify the reset."
+  },
+  {
+    "raw_id": "9c80fe98-4f92-459d-94ff-010983826a2c",
+    "session_id": "9c80fe98-4f92-459d-94ff-010983826a2c",
+    "canonical_name": "Applying URL encoding changes to a redirect allowlist mismatch",
+    "definition": "The agent responds to a redirect URI allowlist error by changing URL encoding even though encoding does not change the decoded URI that the server compares against its configuration.",
+    "canonical_mitigation": "When a server reports a redirect URI mismatch, decode and compare the exact redirect URI against the configured allowlist before editing URL construction; only change encoding if inspection shows the generated query parameter is malformed."
+  },
+  {
+    "raw_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a",
+    "session_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a",
+    "canonical_name": "Applying branch-local history repairs without validating cross-branch diffs",
+    "definition": "The agent independently repaired related branches and declared completion without first checking whether the resulting base-to-feature comparisons actually removed the unwanted changes.",
+    "canonical_mitigation": "Before modifying multiple related branches, map their ancestry and remote state, repair the shared base first, rebase each feature branch onto that repaired base, and verify the exact base-to-feature diff used by each PR before declaring success."
+  },
+  {
+    "raw_id": "a62695f0-6ea5-402e-b957-549bce17a1a8",
+    "session_id": "a62695f0-6ea5-402e-b957-549bce17a1a8",
+    "canonical_name": "Modifying files in response to read-only inspection requests",
+    "definition": "The agent changes repository files when the user asked only to inspect or verify their current or upstream state.",
+    "canonical_mitigation": "Classify requests containing only inspection verbs such as \"look into,\" \"pull and check,\" or \"verify\" as read-only, block write tools for that turn, and present findings plus a proposed diff before requesting explicit authorization to edit."
+  },
+  {
+    "raw_id": "afc7e6e4-5459-40a9-bb60-23b5610c5b7c",
+    "session_id": "afc7e6e4-5459-40a9-bb60-23b5610c5b7c",
+    "canonical_name": "Failure to use the designated clarification tool",
+    "definition": "The agent presented clarification questions as ordinary response text instead of invoking the available user-question tool required by the workflow.",
+    "canonical_mitigation": "When clarification is needed during a planning workflow, detect question lists before responding and require them to be submitted through the designated user-question tool."
+  },
+  {
+    "raw_id": "b30f7f8f-efe4-48fe-bdc8-b0a1d32a4c69",
+    "session_id": "b30f7f8f-efe4-48fe-bdc8-b0a1d32a4c69",
+    "canonical_name": "Failure to deliver a requested proposal before prolonged tool use",
+    "definition": "The agent spends excessive time and tool activity investigating a proposal request without producing the requested proposal.",
+    "canonical_mitigation": "Apply a bounded proposal workflow that caps investigation by time or tool calls and then requires synthesizing and returning a concrete plan before any further exploration."
+  },
+  {
+    "raw_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76",
+    "session_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76",
+    "canonical_name": "Registering subscribers only for resources that already exist",
+    "definition": "The agent implemented subscription registration only against currently existing resources, leaving resources created after connection setup without the required subscribers.",
+    "canonical_mitigation": "Make subscriber registration idempotent and invoke it both when a peer connects and when a resource is created, with tests covering both connection-before-creation and creation-before-connection orderings."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Parallel execution despite an explicit sequential-order constraint",
+    "definition": "The agent launched multiple evaluations concurrently even though the user requested that the benchmarks and model variants be evaluated in sequence.",
+    "canonical_mitigation": "Represent the requested evaluation order as a dependency queue and require the current evaluation to reach a terminal state before submitting its successor, unless the user explicitly approves parallel execution."
+  },
+  {
+    "raw_id": "e08c4b79-41bc-4fcf-ba24-d5b1b14a9fd1",
+    "session_id": "e08c4b79-41bc-4fcf-ba24-d5b1b14a9fd1",
+    "canonical_name": "Bundling unrelated pre-existing changes into a task commit",
+    "definition": "The agent stages and commits changes outside the requested task together with the task-specific implementation without obtaining confirmation.",
+    "canonical_mitigation": "Before committing, classify each changed file against the current task, stage only task-related hunks or files, and ask the user whether unrelated existing changes should be included."
+  },
+  {
+    "raw_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc",
+    "session_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc",
+    "canonical_name": "Soliciting structured decisions in prose instead of the required interaction tool",
+    "definition": "The agent presents clarification questions as a normal response when the workflow requires collecting those decisions through a dedicated user-question tool.",
+    "canonical_mitigation": "When clarification requires user selections and an interactive question tool is available or requested, invoke that tool with the questions and options instead of emitting them as prose."
+  },
+  {
+    "raw_id": "f104115d-a408-46c3-baac-159a808fea85",
+    "session_id": "f104115d-a408-46c3-baac-159a808fea85",
+    "canonical_name": "Misclassification of overlapping records in cross-source comparison",
+    "definition": "The implemented comparison treated database and file records that should share the same normalized identity as disjoint, producing incorrect new, unchanged, or removed counts.",
+    "canonical_mitigation": "Use one shared canonical-key constructor for both database entities and parsed file operations, and add fixture-based tests containing known overlaps that assert the exact new, unchanged, and removed sets."
+  },
+  {
+    "raw_id": "faa7c384-34ba-4410-8a00-7d01f2745a65",
+    "session_id": "faa7c384-34ba-4410-8a00-7d01f2745a65",
+    "canonical_name": "Failure to perform requested end-to-end verification before declaring the fix complete",
+    "definition": "The agent declared a runtime bug fixed after making the prescribed edit without executing the requested reproduction workflow and confirming that it succeeded.",
+    "canonical_mitigation": "Require running the user's exact reproduction command after rebuilding, checking the reported credential source and final operation result, and withhold any completion claim unless it succeeds or an explicit environment blocker is reported."
+  },
+  {
+    "raw_id": "ses_282995518ffetEUivdf3qs4Pnd",
+    "session_id": "ses_282995518ffetEUivdf3qs4Pnd",
+    "canonical_name": "Using a hard-coded generic rate for model-dependent API costs",
+    "definition": "The agent implemented paid-endpoint cost estimates using one guessed flat rate regardless of the provider, model, or provider-reported billing metadata.",
+    "canonical_mitigation": "Implement a provider-aware cost adapter that first consumes documented response cost metadata and otherwise uses the selected model's separate input/output rates; if neither is available, display cost as unavailable rather than applying a generic rate, and validate the adapter with recorded response fixtures."
+  },
+  {
+    "raw_id": "ses_2830a3151ffexUMh9OP8cvHMmq",
+    "session_id": "ses_2830a3151ffexUMh9OP8cvHMmq",
+    "canonical_name": "Modifying the workspace during an informational-only request",
+    "definition": "The agent creates files or changes project dependencies while answering a request that only asks for an explanation of existing behavior.",
+    "canonical_mitigation": "Enforce a read-only tool policy until the user explicitly requests edits; if an experiment is necessary, run it in an OS temporary directory outside the repository and prohibit package-management commands from the repository root."
+  }
+]

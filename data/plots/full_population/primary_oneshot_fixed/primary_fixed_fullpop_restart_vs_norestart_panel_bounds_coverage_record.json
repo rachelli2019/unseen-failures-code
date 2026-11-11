@@ -1,0 +1,25 @@
+{
+  "plot_file": "primary_fixed_fullpop_restart_vs_norestart_panel_bounds.png",
+  "setting": "primary_fixed_fullpop_restart_vs_norestart_panel",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "provenance": "recorded during plotting",
+  "arms": [
+    {
+      "method": "Restart, $\\lambda$ grid ($K = 100$) (ours)",
+      "source_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_K100/combined/trajectories.npz",
+      "array_key": "bound__uniform_K100",
+      "coverage": 0.973,
+      "violation_count": 27,
+      "target_coverage": ""
+    },
+    {
+      "method": "No restart, $\\lambda$ grid ($K = 100$)",
+      "source_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_extra_arms/task_000/trajectories.npz",
+      "array_key": "bound__uniform_K100_norestart",
+      "coverage": 0.971,
+      "violation_count": 29,
+      "target_coverage": ""
+    }
+  ]
+}

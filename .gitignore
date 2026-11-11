@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+
+data/judge_inputs/
+artifacts/judge_inputs/
+
+.env
+.env.*
+
+.DS_Store
+
+# New experiments (experiment-pipeline skill convention) write parsed/intermediate
+# output here; api_responses/ is the committed record instead. Pre-existing tracked
+# files under artifacts/ from before this convention are unaffected by this rule.
+artifacts/

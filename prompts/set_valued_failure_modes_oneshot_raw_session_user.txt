@@ -1,0 +1,7 @@
+Identify every distinct failure mode in the following session, following the granularity, naming, and reporting conventions in your instructions. Do your own incident extraction from the raw session data first, as instructed.
+
+<SESSION>
+Session ID: {{session_id}}
+
+{{raw_session_json}}
+</SESSION>

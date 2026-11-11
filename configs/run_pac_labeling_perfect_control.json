@@ -1,0 +1,21 @@
+{
+  "population_json": "data/population/test_population.json",
+  "predictions_jsonl": "artifacts/reports/pac_safety_labeling/perfect_predictions_control/perfect_predictions.jsonl",
+  "ground_truth_jsonl": "data/ground_truth/pac_safety_labeling_fullcorpus_ground_truth.jsonl",
+  "failure_modes_jsonl": "data/failure_modes/primary_test993.jsonl",
+  "taxonomy_json": "data/taxonomy/primary_test_taxonomy.json",
+  "sampling": "uniform_with_replacement",
+  "n_trials": 1000,
+  "n_workers": 8,
+  "seed": 888,
+  "alpha": 0.05,
+  "epsilons": [
+    0.1,
+    0.15
+  ],
+  "n_draws": 10000,
+  "lambda_grid_points": 100,
+  "history": "flagged_only",
+  "lcheck_prime": "lcheck",
+  "output_dir": "artifacts/reports/pac_safety_labeling/perfect_predictions_control"
+}

@@ -1,0 +1,33 @@
+{
+  "plot_file": "primary_oneshot_lambda_restart_ablation_lambda_bounds.png",
+  "setting": "primary_oneshot_lambda_restart_ablation",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "provenance": "backfilled from documented ablation input; existing figure not regenerated",
+  "arms": [
+    {
+      "method": "Restart mixture, $\\lambda$ = 0.1",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/lambda_restart_ablation.npz",
+      "array_key": "restart_mixture__lambda_0p1",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": 0.95
+    },
+    {
+      "method": "Restart mixture, $\\lambda$ = 0.25",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/lambda_restart_ablation.npz",
+      "array_key": "restart_mixture__lambda_0p25",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": 0.95
+    },
+    {
+      "method": "Restart mixture, $\\lambda$ = 0.5",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/lambda_restart_ablation.npz",
+      "array_key": "restart_mixture__lambda_0p5",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": 0.95
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "taxonomy_json": "data/taxonomy/set_valued_test_taxonomy.json",
+  "population_json": "data/population/test_population.json",
+  "label_name": "set_valued_oneshot_fixed_taxonomy_fullpop",
+  "n_bootstrap_samples": 3000,
+  "n_trials": 1000,
+  "n_workers": 8,
+  "seed": 888,
+  "alpha": 0.05,
+  "lambda_values": [
+    0.1,
+    0.25,
+    0.5
+  ],
+  "binary_search_iterations": 50,
+  "stopping_epsilons": [
+    0.1,
+    0.05,
+    0.01
+  ],
+  "ci_level": 0.95,
+  "output_json": "artifacts/reports/e_value_empirical_validation/set_valued_oneshot_fixed_fullpop.json",
+  "output_npz": "artifacts/reports/e_value_empirical_validation/set_valued_oneshot_fixed_fullpop.npz"
+}

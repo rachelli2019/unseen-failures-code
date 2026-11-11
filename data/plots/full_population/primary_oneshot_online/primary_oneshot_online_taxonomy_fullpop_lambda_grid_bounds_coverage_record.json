@@ -1,0 +1,33 @@
+{
+  "plot_file": "primary_oneshot_online_taxonomy_fullpop_lambda_grid_bounds.png",
+  "setting": "primary_oneshot_online_taxonomy_fullpop_lambda_grid",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "provenance": "recorded during plotting",
+  "arms": [
+    {
+      "method": "GT UCB (pointwise)",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/primary_oneshot_online_fullpop.npz",
+      "array_key": "gt_bound_uncorrected_matrix",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": ""
+    },
+    {
+      "method": "GT UCB (simultaneous)",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/primary_oneshot_online_fullpop.npz",
+      "array_key": "gt_bound_matrix",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": ""
+    },
+    {
+      "method": "Anytime-Valid UCB (ours)",
+      "source_npz": "artifacts/lambda_grid_mixture/online_fullpop_s888_K100/combined/trajectories.npz",
+      "array_key": "bound__uniform_K100",
+      "coverage": 0.981,
+      "violation_count": 19,
+      "target_coverage": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "plot_file": "set_valued_oneshot_fixed_taxonomy_fullpop_lambda_grid_bounds.png",
+  "setting": "set_valued_oneshot_fixed_taxonomy_fullpop_lambda_grid",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "provenance": "recorded during plotting",
+  "arms": [
+    {
+      "method": "Anytime-Valid UCB (ours)",
+      "source_npz": "artifacts/lambda_grid_mixture/set_valued_fullpop_s888_K100/combined/trajectories.npz",
+      "array_key": "bound__uniform_K100",
+      "coverage": 0.975,
+      "violation_count": 25,
+      "target_coverage": ""
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "source_run": "artifacts/reports/pac_safety_labeling/fixed_population",
+  "config": {
+    "population_json": "data/population/test_population.json",
+    "predictions_jsonl": "data/safety_labels/pac_luna_predictions_fullcorpus5014.jsonl",
+    "ground_truth_jsonl": "data/ground_truth/pac_safety_labeling_fullcorpus_ground_truth.jsonl",
+    "failure_modes_jsonl": "data/failure_modes/primary_test993.jsonl",
+    "taxonomy_json": "data/taxonomy/primary_test_taxonomy.json",
+    "sampling": "uniform_with_replacement",
+    "n_trials": 1000,
+    "n_workers": 8,
+    "seed": 888,
+    "alpha": 0.05,
+    "epsilons": [
+      0.1,
+      0.15
+    ],
+    "n_draws": 10000,
+    "lambda_grid_points": 100,
+    "history": "flagged_only",
+    "lcheck_prime": "lcheck",
+    "output_dir": "artifacts/reports/pac_safety_labeling/fixed_population"
+  },
+  "bound_coverage_epsilon": 0.1,
+  "bound_coverage_horizon": 3000,
+  "coverage_at_horizon": {
+    "Ground-Truth": 0.973,
+    "Imperfect Failure Labels": 1.0
+  },
+  "stopping_epsilons": [
+    0.1,
+    0.15
+  ],
+  "mean_additional_stopping_cost": [
+    3791.625,
+    3540.348
+  ],
+  "uncertainty": "Upper bounds: central 95% trial bands. Additional stopping cost: mean only, paired identical session draws.",
+  "caveat": "PAC uses imperfect Luna predictions but queries every pre-stop label at both tested epsilons. Extra stopping cost includes epsilon/2 and alpha/2 budgets.",
+  "method": "Normalized log-squared weights, total capital 1, K=100 lambda mixture. PAC zeta=epsilon/2; lambda midpoint grid/(1+epsilon/2); alpha/2.",
+  "numerics": "UCB rounded upward by at most .002. Coverage evaluated directly at history-specific true mass. All reconstructed threshold crossings checked against saved logs.",
+  "files_sha256": {
+    "artifacts/reports/pac_safety_labeling/fixed_population/trajectories.npz": "662b1fdb61d25869d77f6c7110c215ba87516de4fd0ed0c85f707570e3707a53",
+    "artifacts/reports/pac_safety_labeling/fixed_population/trials.json": "e2fdcad6b085619bd081502cd3b40495ade4c5cfa92e8ed700e6c044e42c0c93",
+    "artifacts/reports/pac_safety_labeling/fixed_population/summary.json": "baa282a4a768a3eed8cf0139b664bd5e4e349b55fc1286adaa4f18761d3a7bec",
+    "/Users/rachelli/Documents/Projects/unseen-failures/src/plotting/plot_pac_grid.py": "69bcde76520f74440c428c5a21865c58d294a63b501387954cff51da9a033ed1",
+    "/Users/rachelli/Documents/Projects/unseen-failures/src/weighted_restart_kernel.cpp": "5db4ff6a653b29b2f0306dc8172a6f4cf524b9fe57e97008ab57624d60292070"
+  }
+}

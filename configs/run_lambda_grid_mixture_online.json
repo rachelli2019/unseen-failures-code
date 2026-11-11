@@ -1,0 +1,32 @@
+{
+  "discovery": {
+    "backend": "online_primary",
+    "records_json": "data/embeddings/primary_test_records.json",
+    "population_json": "data/population/test_population.json",
+    "embeddings_cache_json": "data/embeddings/primary_test_embeddings.json.gz",
+    "embedding_model": "text-embedding-3-small",
+    "similarity_threshold": 0.7
+  },
+  "label_name": "primary_oneshot_online_lambda_grid_mixture_fullpop",
+  "n_bootstrap_samples": 3000,
+  "n_trials": 1000,
+  "n_workers": 8,
+  "seed": 888,
+  "alpha": 0.05,
+  "binary_search_iterations": 20,
+  "arms": [
+    {
+      "name": "uniform_K100",
+      "uniform_grid_points": 100
+    },
+    {
+      "name": "single_lambda_0p25",
+      "lambda_values": [
+        0.25
+      ],
+      "lambda_weights": [
+        1.0
+      ]
+    }
+  ]
+}

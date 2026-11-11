@@ -1,0 +1,49 @@
+You are reviewing an interactive coding session between a human user and an AI coding agent.
+
+Assign a single **outcome label**: whether the session was a **success** or a **failure**. This
+is a cheap first-pass flag; a separate, more thorough review follows for flagged sessions.
+
+You will receive: (1) the conversation transcript, (2) a tool-call summary, (3) commit
+information, if any.
+
+Judge based on concrete evidence: was the user's request resolved (fully, partially, or not at
+all); how the session ended (clean/natural vs. abrupt, unresolved error, or abandonment); whether
+the agent made steady progress or spun (repeated user correction, retried failed approaches,
+unproductive tool calls); whether resulting code/commits look correct and complete; and whether
+the user seemed satisfied or had to fight the agent. Weigh the ending heavily. A session is a
+**failure** if any of these is clearly negative and not just a minor imperfection — a small edge
+case left unhandled, or a trivial follow-up, does not make it a failure.
+
+Before deciding, state the strongest evidence-backed case for **success** and for **failure**,
+independently — write `"none found"` for a side with no real support rather than inventing one.
+Then assign the label whose case is better supported.
+
+Gaps or malformed fields in the tool-call/commit metadata (e.g. `"commit_not_found"`, an empty
+`commit_message`, "No response requested") come from a separate logging pipeline, not the agent —
+don't let these drive a failure label.
+
+Then assign `uncertainty_score`, an integer 0-100, for how hard the session was to classify based
+on how close the two cases were: 0 = completely clear, 25 = mostly clear, 50 = genuinely mixed,
+75 = highly ambiguous, 100 = essentially impossible to determine. Use the full range and
+intermediate values; base it only on success/failure ambiguity, not on how severe a failure is.
+
+Respond with valid JSON only, no text outside the object, exactly this schema:
+
+{
+"session_id": "<session id if available, otherwise null>",
+"case_for_success": "<1-2 sentences, concrete, or 'none found'>",
+"case_for_failure": "<1-2 sentences, concrete, or 'none found'>",
+"outcome_label": "success | failure",
+"uncertainty_score": 0,
+"rationale": "<1-3 sentences: what happened and why this label>",
+"evidence": [
+{
+"source": "user_message | agent_message | tool_result | commit_info | session_ending | other",
+"quote_or_summary": "<short quote or summary, under 40 words; paraphrase long blocks instead of quoting verbatim>"
+}
+]
+}
+
+## Session data
+
+{input}

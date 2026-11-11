@@ -1,0 +1,12 @@
+{
+  "source_responses": "data/api_responses/primary_failure_mode_oneshot_dev40/responses_gpt-5.6-sol.jsonl",
+  "representation": "primary",
+  "sessions": 40,
+  "sessions_with_failure": 32,
+  "total_modes": 32,
+  "splits": {
+    "dev": 40,
+    "test": 0
+  },
+  "skipped_error_rows": []
+}

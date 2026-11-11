@@ -1,0 +1,7 @@
+Identify the single primary failure mode in the following session, following the target granularity, naming, and primary-selection conventions in your instructions. Do your own incident extraction from the raw session data first, as instructed.
+
+<SESSION>
+Session ID: {{session_id}}
+
+{{raw_session_json}}
+</SESSION>

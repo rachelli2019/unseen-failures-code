@@ -1,0 +1,33 @@
+{
+  "plot_file": "primary_llm_merge_fixed_taxonomy_fullpop_lambda_grid_bounds.png",
+  "setting": "primary_llm_merge_fixed_taxonomy_fullpop_lambda_grid",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "provenance": "recorded during plotting",
+  "arms": [
+    {
+      "method": "GT UCB (pointwise)",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/primary_llm_merge_fixed_fullpop.npz",
+      "array_key": "gt_upper_bound_matrix",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": ""
+    },
+    {
+      "method": "GT UCB (simultaneous)",
+      "source_npz": "artifacts/reports/e_value_empirical_validation/primary_llm_merge_fixed_fullpop.npz",
+      "array_key": "gt_bonferroni_bound_matrix",
+      "coverage": 1.0,
+      "violation_count": 0,
+      "target_coverage": ""
+    },
+    {
+      "method": "Anytime-Valid UCB (ours)",
+      "source_npz": "artifacts/lambda_grid_mixture/llm_merge_fullpop_s888_K100/combined/trajectories.npz",
+      "array_key": "bound__uniform_K100",
+      "coverage": 0.979,
+      "violation_count": 21,
+      "target_coverage": ""
+    }
+  ]
+}

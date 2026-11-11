@@ -1,0 +1,93 @@
+{
+  "setting": "Primary fixed taxonomy",
+  "prefix": "primary_fixed_fullpop",
+  "grid_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_K100/combined/trajectories.npz",
+  "closed_form_npz": "artifacts/closed_form_mixture/primary_fixed_fullpop_s888_cf/task_000/trajectories.npz",
+  "fixed_npz": "artifacts/lambda_grid_mixture/primary_fixed_fullpop_s888_K100/combined/trajectories.npz",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "report_times": [
+    100,
+    300,
+    1000,
+    2000,
+    3000
+  ],
+  "oracle_mean": [
+    0.14210118927635704,
+    0.13046865551300277,
+    0.10168978028623368,
+    0.07584357992340329,
+    0.05844124168514466
+  ],
+  "arms": {
+    "Fixed $\\lambda = 0.25$": {
+      "simultaneous_coverage": 0.992,
+      "mean": [
+        0.28952333641052247,
+        0.19641697597503663,
+        0.14929168033599854,
+        0.12260526657104492,
+        0.10093179512023925
+      ],
+      "ratio_to_grid": [
+        1.1303390205904251,
+        0.9711401836988555,
+        0.9603460268383522,
+        0.981082519117944,
+        0.9901529765170642
+      ]
+    },
+    "$\\lambda$ grid, $K=100$": {
+      "simultaneous_coverage": 0.973,
+      "mean": [
+        0.25778759384155275,
+        0.2023459358215332,
+        0.15544392490386963,
+        0.12500821208953858,
+        0.1020008659362793
+      ],
+      "ratio_to_grid": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "Closed-form $\\lambda$": {
+      "simultaneous_coverage": 0.998,
+      "mean": [
+        0.31268961334265977,
+        0.23457111167960798,
+        0.17278075122898695,
+        0.137362282753716,
+        0.11243094825822142
+      ],
+      "ratio_to_grid": [
+        1.2181344163199646,
+        1.160711736470214,
+        1.1118500601512618,
+        1.099212091148126,
+        1.1029270745837478
+      ]
+    },
+    "Best in hindsight (cheating)": {
+      "simultaneous_coverage": 0.897,
+      "mean": [
+        0.24384894371083946,
+        0.1918878612524473,
+        0.148589365006196,
+        0.12013343715743696,
+        0.09835386180958014
+      ],
+      "ratio_to_grid": [
+        0.9447480399427439,
+        0.9480110317484137,
+        0.955832396971479,
+        0.9609801899687134,
+        0.9641991828604349
+      ]
+    }
+  }
+}

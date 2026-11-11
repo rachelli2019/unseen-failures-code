@@ -1,0 +1,18 @@
+{
+  "input_npz": "artifacts/lambda_grid_mixture/llm_merge_fullpop_s888_K100/combined/trajectories.npz",
+  "bound_key": "bound__uniform_K100",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "eps_min": 0.057937915742794645,
+  "eps_max": 0.13572384599879206,
+  "n_eps": 60,
+  "oracle_window": [
+    0.05764966740576582,
+    0.13585970570449654
+  ],
+  "aggregate": "per_trial",
+  "smallest_uncensored_epsilon": 0.10074234008789062,
+  "at": {
+    "0.12": 1182.929
+  }
+}

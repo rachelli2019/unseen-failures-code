@@ -1,0 +1,8 @@
+{
+  "base_config": "configs/run_pac_labeling_perfect_control.json",
+  "alphas": [0.05],
+  "epsilons": [0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9],
+  "n_trials": 200,
+  "n_draws": 5000,
+  "output_dir": "artifacts/reports/pac_safety_labeling/perfect_epsilon_sweep"
+}

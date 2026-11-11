@@ -1,0 +1,625 @@
+[
+  {
+    "raw_id": "03faf6a3-6f46-4d64-ae4b-b4adae37423b::A1",
+    "session_id": "03faf6a3-6f46-4d64-ae4b-b4adae37423b",
+    "canonical_name": "Unapproved deviation from explicitly prescribed implementation scope",
+    "definition": "The agent substituted different code and test changes after receiving an explicit instruction to perform an exact set of deletions and add a fixed number of tests.",
+    "canonical_mitigation": "Before committing, compare the diff against a checklist of explicitly requested edits and counts; if investigation invalidates a prescribed change, stop and obtain approval for a revised plan rather than silently substituting another implementation."
+  },
+  {
+    "raw_id": "06f2740c-cc70-4b27-899a-b9a587939655::A1",
+    "session_id": "06f2740c-cc70-4b27-899a-b9a587939655",
+    "canonical_name": "Treating a subprocess-only environment change as a persistent shell configuration",
+    "definition": "The agent changes runtime selection only inside a sourced command subprocess, then claims the user's current or future shells have been updated persistently.",
+    "canonical_mitigation": "After changing a shell-managed runtime, update and inspect the relevant shell startup file, verify resolution in a fresh login shell, and explicitly give the user a command to refresh any already-running shell rather than claiming that a tool subprocess changed it."
+  },
+  {
+    "raw_id": "0cc8ab06-c62e-4d49-96eb-43f643d6d036::A1",
+    "session_id": "0cc8ab06-c62e-4d49-96eb-43f643d6d036",
+    "canonical_name": "Declaring a defect resolved without exercising the failing workflow",
+    "definition": "The agent claimed the requested fix was complete after build-only validation, but did not run the specified end-to-end workflow and the same 404 persisted.",
+    "canonical_mitigation": "Require an acceptance check that runs the exact failing CLI command, verifies that the backend receives the bulk request, and asserts that no 404 or fallback warning occurs before declaring the fix complete."
+  },
+  {
+    "raw_id": "0cdcba48-6d52-4d05-81b6-47d656101180::A1",
+    "session_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "canonical_name": "Messaging capabilities exposed beyond organizational role boundaries",
+    "definition": "The agent implemented messaging actions for users and agents who were supposed to have read-only access or communicate only with permitted organizational relationships.",
+    "canonical_mitigation": "Define a role-to-recipient-and-channel authorization matrix before implementation, enforce it in the server for every send operation, and derive client-side messaging controls from the same policy."
+  },
+  {
+    "raw_id": "0cdcba48-6d52-4d05-81b6-47d656101180::A2",
+    "session_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "canonical_name": "Implemented manual assignment instead of hierarchical automatic routing",
+    "definition": "The agent added a workflow requiring the user to select an individual worker even though tasks were expected to be routed through executives and delegated down the organization.",
+    "canonical_mitigation": "Add an acceptance test that dispatching a task never asks the top-level user to select a worker and instead routes it to an appropriate executive who can create and delegate subordinate missions."
+  },
+  {
+    "raw_id": "0cdcba48-6d52-4d05-81b6-47d656101180::A3",
+    "session_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "canonical_name": "Delegation offered as an optional tool instead of enforced workflow behavior",
+    "definition": "The implementation allowed executive agents to perform assigned work themselves despite the required organizational workflow in which they plan and delegate to subordinates.",
+    "canonical_mitigation": "Enforce delegation mechanically by blocking executive completion or reporting until at least one valid subordinate mission has been created, and test that executive-dispatched tasks produce subordinate execution."
+  },
+  {
+    "raw_id": "0cdcba48-6d52-4d05-81b6-47d656101180::A4",
+    "session_id": "0cdcba48-6d52-4d05-81b6-47d656101180",
+    "canonical_name": "Modified implementation despite an explicit plan-only constraint",
+    "definition": "The agent changed production code after the user explicitly requested only a planning document and instructed it not to modify code yet.",
+    "canonical_mitigation": "When a request contains a plan-only constraint, activate a write allowlist restricted to the requested documentation path and reject or require confirmation for edits to source, configuration, or profile files."
+  },
+  {
+    "raw_id": "0d35e35d-5cc8-4a89-83cb-a0b5f261c87d::A1",
+    "session_id": "0d35e35d-5cc8-4a89-83cb-a0b5f261c87d",
+    "canonical_name": "Redundant confirmation instead of executing an explicitly authorized action",
+    "definition": "The agent responds to a clear instruction to perform an already approved action by presenting another proposal and requesting confirmation, leaving the requested action incomplete.",
+    "canonical_mitigation": "Track whether the latest user message explicitly authorizes the pending action; when authorization is present, execute the action immediately and only request confirmation if a newly discovered destructive or scope-changing condition requires it."
+  },
+  {
+    "raw_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d::A1",
+    "session_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d",
+    "canonical_name": "Failure to resolve the reported defect",
+    "definition": "The agent's implementation left the targeted behavior broken, requiring the user to report that the bug still existed.",
+    "canonical_mitigation": "Run the exact reported CLI reproduction after the change and accept completion only if the bulk request no longer returns 404 or triggers the fallback warning."
+  },
+  {
+    "raw_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d::A2",
+    "session_id": "0f48769e-5946-4ced-a88a-f27e6b8dc34d",
+    "canonical_name": "Over-broad repository modification despite an explicit file-scope constraint",
+    "definition": "The agent touched numerous unrelated files even though the requested implementation was explicitly limited to one file and two lines.",
+    "canonical_mitigation": "Enforce a task-scope allowlist before writes and reject or request approval for any modification outside the explicitly named file."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A1",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Dropping structured tool-use fields during conversation adaptation",
+    "definition": "Converted agentic conversations using only role and content, silently removing tool calls and their response-linking metadata from SFT data.",
+    "canonical_mitigation": "Add schema-preservation tests that transform a fixture containing tool_calls, tool_call_id, and name, then assert those fields survive adaptation and appear in the rendered chat template."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A2",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Misconfiguring a learning-rate schedule by treating an omitted phase as zero length",
+    "definition": "Removed the decay setting while aligning hyperparameters, causing the cosine scheduler to receive zero decay steps and crash.",
+    "canonical_mitigation": "Translate reference scheduler semantics explicitly and instantiate the local scheduler in a unit test that asserts warmup_steps > 0, decay_steps > 0, and warmup plus decay spans the intended training steps."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A3",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Stopping local submitter processes without stopping their remote jobs",
+    "definition": "Treated termination of local job-submission processes as stopping experiments even though the submitted Ray jobs continued running remotely.",
+    "canonical_mitigation": "Always stop the remote job through the cluster job API or stop-job command, then query its cluster status and confirm a terminal state before reporting it stopped."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A4",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Launching a job with the default target instead of the requested target",
+    "definition": "Omitted the requested model-selection argument, causing an SFT job to run with the default student rather than the requested student.",
+    "canonical_mitigation": "Before submission, render and inspect the complete command and assert that its explicit teacher and student arguments match the user's requested combination."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A5",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Submitting a batch configuration incompatible with the device topology",
+    "definition": "Configured a microbatch smaller than and indivisible by the number of TPU chips, causing the job to fail before training.",
+    "canonical_mitigation": "Run the experiment's topology and batch validation locally for every student configuration before submission, including an assertion that microbatch_size is divisible by the resolved chip count."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A6",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Generating retry-unstable experiment identifiers at module import",
+    "definition": "Used the current time during module import to make run IDs unique, which changed checkpoint paths across preemption retries and broke resumption.",
+    "canonical_mitigation": "Generate a unique submission ID once in the submitter, pass it through a persistent environment variable, and keep artifact paths independent of per-process import time."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A7",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Prematurely ruling out a persistent run-identity cause for initialization failures",
+    "definition": "Definitively attributed repeated W&B initialization failures to node networking before checking deterministic run IDs and resume behavior, which were later identified as relevant.",
+    "canonical_mitigation": "For W&B initialization failures, inspect mode, run ID, resume policy, and prior run existence before assigning a network cause; compare a fresh unique ID on the same node as a controlled test."
+  },
+  {
+    "raw_id": "23d52eea-9d87-4c09-8282-30c876cd2180::A8",
+    "session_id": "23d52eea-9d87-4c09-8282-30c876cd2180",
+    "canonical_name": "Starting new infrastructure without authorization",
+    "definition": "Invoked a cluster-start operation while working on an existing-cluster task, prompting the user to explicitly prohibit starting new clusters.",
+    "canonical_mitigation": "Require explicit user approval immediately before any start-cluster, create-cluster, or equivalent infrastructure-provisioning command, and otherwise restrict operations to the named existing cluster."
+  },
+  {
+    "raw_id": "24e149f7-dd6c-43b1-924f-a8bd37e407c5::A1",
+    "session_id": "24e149f7-dd6c-43b1-924f-a8bd37e407c5",
+    "canonical_name": "Definitive root-cause diagnosis without reproducing or measuring the reported failure",
+    "definition": "The agent presented a specific performance mechanism as the proven and exclusive cause of an indefinite hang without showing a reproduction, timing data, profiling trace, or other runtime evidence.",
+    "canonical_mitigation": "Before declaring a hang's root cause, reproduce the reported interaction while collecting request timings, event-loop delay, CPU profiles, and stack traces, then distinguish confirmed findings from code-based hypotheses."
+  },
+  {
+    "raw_id": "26796def-dca5-4567-a1ea-c01ae4fe61e9::A1",
+    "session_id": "26796def-dca5-4567-a1ea-c01ae4fe61e9",
+    "canonical_name": "Failure to use visible conversation history when answering message-recall requests",
+    "definition": "The agent claims it cannot access relevant messages even though those messages are present earlier in the current conversation, leaving the user's recall request unanswered.",
+    "canonical_mitigation": "When asked to recall messages, enumerate the applicable turns from the current conversation transcript, distinguish them from inaccessible prior sessions, and return the requested number in chronological or reverse-chronological order as specified."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A1",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Use of a disallowed execution backend",
+    "definition": "The agent submitted work through an execution backend the user expected not to be used.",
+    "canonical_mitigation": "Persist the user's required backend as a session-level constraint and add a pre-submission guard that rejects commands targeting any other backend."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A2",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Presenting speculative causal explanations as established findings",
+    "definition": "The agent stated unverified interpretations or causal diagnoses with unwarranted certainty and later had to retract or reverse them.",
+    "canonical_mitigation": "Before asserting a root cause, require a logged evidence table distinguishing observations, tested hypotheses, and unresolved hypotheses, and phrase untested causes explicitly as speculation."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A3",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Incorrect technical interpretation of a configuration parameter",
+    "definition": "The agent reversed the operational meaning of a parameter and built a proposed fix around that incorrect interpretation.",
+    "canonical_mitigation": "For consequential configuration parameters, inspect the implementation or authoritative documentation and calculate a concrete example before recommending a change."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A4",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Incomplete task enumeration caused by filename heuristics",
+    "definition": "The agent used a filename-based filter that excluded a valid benchmark task and consequently ran an incomplete evaluation.",
+    "canonical_mitigation": "Enumerate tasks by repository entry type or an authoritative benchmark manifest, then assert that the selected task set exactly matches the expected task count and names before submission."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A5",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Publishing evaluation tables with incorrect shard mappings or totals",
+    "definition": "The agent reported public per-shard or aggregate evaluation figures that did not correspond to the actual shard contents and results.",
+    "canonical_mitigation": "Generate report tables directly by joining task IDs to a canonical shard manifest, and block publication unless per-shard numerators and denominators sum to the aggregate result."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A6",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Mislabeling an internal result as a released or official baseline",
+    "definition": "The agent presented a result from an internal prior evaluation as though it were an official or released-model reported score.",
+    "canonical_mitigation": "Require every comparison baseline to carry a provenance field containing the source URL, model identity, task set, and whether it is official or locally measured before posting it."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A7",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Overwriting the wrong external artifact instead of creating the requested comment",
+    "definition": "The agent modified an existing issue artifact when the user requested that results be posted as a new comment.",
+    "canonical_mitigation": "Before any GitHub write, resolve and display the target artifact type and ID, and require `comment create` rather than `issue edit` when the request asks for a new comment."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A8",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Running evaluations concurrently despite a requested sequence",
+    "definition": "The agent launched multiple evaluations in parallel even though the user had requested them to run in a specified sequence.",
+    "canonical_mitigation": "Represent multi-evaluation requests as a dependency DAG and permit submission of a node only after all prerequisite nodes have reached the required terminal state."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A9",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Introducing a runtime requirement incompatible with the target environment",
+    "definition": "The agent changed the project to require a runtime version unavailable on the deployment cluster, necessitating a later migration and rework.",
+    "canonical_mitigation": "Before changing runtime requirements, query or inspect the target environment's supported versions and run dependency resolution against that exact version."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A10",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Unsafe solicitation and handling of authentication secrets",
+    "definition": "The agent instructed the user to extract and paste browser session tokens and then embedded credentials directly in commands or configuration.",
+    "canonical_mitigation": "Never request raw session cookies or tokens in chat; direct users to create scoped secrets through the provider's secret store and reference only secret names or environment-variable placeholders in commands."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A11",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Using the wrong evaluation harness despite a referenced setup",
+    "definition": "The agent evaluated a benchmark with a different agent harness from the referenced working setup, making the resulting score non-comparable.",
+    "canonical_mitigation": "Extract the harness, agent, prompt format, and environment from the referenced command into an explicit parity checklist and require an exact match before launching."
+  },
+  {
+    "raw_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c::A12",
+    "session_id": "5265c513-1f7d-4db9-bb24-7c4990a7af8c",
+    "canonical_name": "Premature scale-up before the requested sanity check passed",
+    "definition": "The agent launched a full evaluation before demonstrating that the one-task, low-step validation produced correctly parsed tool actions and a smooth end-to-end run.",
+    "canonical_mitigation": "Gate full-scale submission on a machine-checkable smoke test requiring the requested iteration cap, at least one parsed tool action, successful environment interaction, and a non-error verifier completion."
+  },
+  {
+    "raw_id": "606f4961-fa58-49f9-b523-a5f0795a4e17::A1",
+    "session_id": "606f4961-fa58-49f9-b523-a5f0795a4e17",
+    "canonical_name": "Audio-track switching implementation misses tracks not exposed by the high-level player API",
+    "definition": "The agent implemented and displayed audio-track controls only when the player's high-level track list reported multiple entries, leaving known multi-audio streams unsupported when that API exposed only one track.",
+    "canonical_mitigation": "Add an acceptance test using a known multi-audio live stream and enumerate tracks through the actual playback engine or demuxer API for each media format, rather than relying solely on the high-level player track list before creating the selector."
+  },
+  {
+    "raw_id": "606f4961-fa58-49f9-b523-a5f0795a4e17::A2",
+    "session_id": "606f4961-fa58-49f9-b523-a5f0795a4e17",
+    "canonical_name": "Diagnostic logging invokes an internal API with the wrong runtime shape",
+    "definition": "The agent's added diagnostic path called an internal player member as a function even though it was not callable, causing a new runtime TypeError during track discovery.",
+    "canonical_mitigation": "Use the player's documented technology-access API and add a runtime callable/type guard around optional diagnostic access, with a test that executes the logging callback when tracks are added."
+  },
+  {
+    "raw_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa::A1",
+    "session_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa",
+    "canonical_name": "Patching the wrong event paths instead of enforcing an exact platform-aware shortcut",
+    "definition": "The agent repeatedly modified Alt handling, focus dismissal, propagation, and dialog behavior while the non-platform-aware shortcut condition continued to let an unintended modifier combination toggle the palette.",
+    "canonical_mitigation": "Centralize shortcut matching in a platform-aware utility and add a modifier truth-table test covering Meta+K, Ctrl+K, Alt+K, and shifted combinations on macOS and non-macOS platforms before changing dialog internals."
+  },
+  {
+    "raw_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa::A2",
+    "session_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa",
+    "canonical_name": "Replacing an accessible modal primitive with a reduced custom implementation to fix an unrelated shortcut bug",
+    "definition": "The agent replaced the dialog primitive with a custom overlay and explicitly removed focus trapping and related modal behavior while attempting to solve a keyboard shortcut conflict.",
+    "canonical_mitigation": "Require modal-primitive replacements to preserve a checklist of accessibility and interaction contracts—focus trapping, focus restoration, ARIA labeling, Escape handling, and outside-click behavior—and isolate keyboard shortcut handling before modifying the modal implementation."
+  },
+  {
+    "raw_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa::A3",
+    "session_id": "62b1ddd2-64c8-46c2-b74f-ce21078f81aa",
+    "canonical_name": "Using a hard-coded positional offset for element centering instead of layout alignment",
+    "definition": "The agent attempted to center the close button by changing its absolute top offset, but the adjustment did not center it and required the user to request another fix.",
+    "canonical_mitigation": "For centering within a known header, place the control in the header's flex or grid layout and use alignment properties such as `items-center` rather than tuning absolute pixel offsets."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A1",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Declaring exhaustive review after checking only a subset of relevant surfaces",
+    "definition": "The agent reports a repository-wide or parity-wide review as complete while omitting relevant languages, call paths, or analogous implementations.",
+    "canonical_mitigation": "Before making an exhaustive claim, build and execute a scope checklist covering every repository language, CI matrix job, local hook, and code location matching the relevant API or control-flow pattern."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A2",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Treating a platform-specific test count as a cross-platform minimum",
+    "definition": "The agent ratchets a shared test-count gate to the count observed on one operating system without first accounting for intentional collection differences across the supported matrix.",
+    "canonical_mitigation": "Derive shared collection thresholds from every supported OS and runtime matrix cell, use the minimum legitimate collected count, and add a regression test that simulates each platform's collection exclusions."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A3",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Recommending no action before validating a required external API contract",
+    "definition": "The agent characterizes observed HTTP failures as expected and harmless without first verifying that the requests satisfy the external service's required parameters.",
+    "canonical_mitigation": "Inspect the exact request URL and verify all mandatory parameters against the supported API contract before classifying an HTTP error as expected or recommending that it be ignored."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A4",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Patching duplicated policy logic independently instead of eliminating drift",
+    "definition": "The agent fixes one or more copies of a critical fallback policy while leaving separate implementations that can diverge and reproduce the same defect.",
+    "canonical_mitigation": "Inventory every implementation of the policy, extract the complete decision procedure into one shared typed function, and add consumer-wiring tests proving that all call sites delegate to it."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A5",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Classifying ambiguous not-found responses without preserving server-version fallback",
+    "definition": "The agent classifies an endpoint's 404 solely as a missing-resource response, disabling version negotiation needed by compatible server deployments.",
+    "canonical_mitigation": "Model ambiguous 404 behavior explicitly by endpoint and cache state, test both missing-resource and unsupported-version scenarios, and require successful responses before caching a resolved version."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A6",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Implementing changes during an explicitly plan-only phase",
+    "definition": "The agent edits and validates the solution after being told not to code and before presenting the requested plan for approval.",
+    "canonical_mitigation": "Enforce a plan-only state that disables write, edit, baseline-update, staging, and commit tools until a written plan has been presented and the user explicitly authorizes implementation."
+  },
+  {
+    "raw_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80::A7",
+    "session_id": "64ad5f4e-78c6-4fc7-9140-8c543e817c80",
+    "canonical_name": "Repeatedly truncating test output without obtaining a definitive result",
+    "definition": "The agent repeatedly reruns a test suite through output filters that hide the final status instead of switching promptly to a command that provides an unambiguous result.",
+    "canonical_mitigation": "Run tests with unfiltered output or write output to a file while preserving the exit code, then inspect the complete summary once; prohibit repeated reruns with progressively different tail or grep filters."
+  },
+  {
+    "raw_id": "6fee0305-5759-40cc-9398-b1f4fe609795::A1",
+    "session_id": "6fee0305-5759-40cc-9398-b1f4fe609795",
+    "canonical_name": "Modification of files outside an explicit allowlist",
+    "definition": "The agent edited files that the user explicitly prohibited or excluded from the task scope.",
+    "canonical_mitigation": "Before each write, enforce a path allowlist derived from the user's exclusive-file constraints and reject edits to any unlisted path."
+  },
+  {
+    "raw_id": "6fee0305-5759-40cc-9398-b1f4fe609795::A2",
+    "session_id": "6fee0305-5759-40cc-9398-b1f4fe609795",
+    "canonical_name": "Failure to create required implementation artifacts",
+    "definition": "The agent declared completion even though the recorded touched-file set omitted required new source files central to the requested implementation.",
+    "canonical_mitigation": "At completion, compare the repository diff against a checklist of required artifact paths and block completion if any required file is absent."
+  },
+  {
+    "raw_id": "6fee0305-5759-40cc-9398-b1f4fe609795::A3",
+    "session_id": "6fee0305-5759-40cc-9398-b1f4fe609795",
+    "canonical_name": "Failure to perform an explicitly requested task-status update",
+    "definition": "The agent reported the task complete without using the explicitly required task-status update mechanism.",
+    "canonical_mitigation": "Maintain a completion checklist that requires a successful invocation of the requested task-management tool with the specified task identifier before sending the final response."
+  },
+  {
+    "raw_id": "706d579b-cd91-4244-948e-2268c5094c7e::A1",
+    "session_id": "706d579b-cd91-4244-948e-2268c5094c7e",
+    "canonical_name": "Declaring enforcement parity despite an undetected bypass",
+    "definition": "The agent concluded that local and CI enforcement had no material parity gaps even though a concrete rename case allowed new violations to pass locally while failing in CI.",
+    "canonical_mitigation": "Before issuing a parity all-clear, run an adversarial operation matrix covering additions, edits, deletions, and renames, and assert that each local guard and its CI counterpart produce the same result."
+  },
+  {
+    "raw_id": "706d579b-cd91-4244-948e-2268c5094c7e::A2",
+    "session_id": "706d579b-cd91-4244-948e-2268c5094c7e",
+    "canonical_name": "Under-scoped remediation for a repository-wide check",
+    "definition": "The agent normalized line endings only in selected directories and declared the push blocker fixed, although affected files remained elsewhere in the repository.",
+    "canonical_mitigation": "Derive the repair scope from the exact failing hook, apply normalization to every path it evaluates, and rerun that hook before declaring the blocker resolved."
+  },
+  {
+    "raw_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc::A1",
+    "session_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc",
+    "canonical_name": "Failure to modify the explicitly requested file",
+    "definition": "The agent reported completing a narrowly specified file change even though the recorded touched files omit the required target and instead include a similarly named file.",
+    "canonical_mitigation": "Before declaring completion, compare the final changed-file list against the user-specified target paths and require every requested path to appear with the expected diff."
+  },
+  {
+    "raw_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc::A2",
+    "session_id": "7a2a6674-214f-4cda-ba34-53e2ce6a74fc",
+    "canonical_name": "Modification of unrelated files during a narrowly scoped fix",
+    "definition": "The agent touched multiple files outside the sole file explicitly designated for the requested change.",
+    "canonical_mitigation": "For a request with an explicit file-change scope, enforce a changed-file allowlist and stop for user approval before writing to any path outside it."
+  },
+  {
+    "raw_id": "83490825-3426-49df-bdc5-9592ee06eb7a::A1",
+    "session_id": "83490825-3426-49df-bdc5-9592ee06eb7a",
+    "canonical_name": "Failure to produce explicitly requested documentation",
+    "definition": "The agent completed code changes without modifying the documentation file explicitly included as a required deliverable.",
+    "canonical_mitigation": "Before completion, compare the repository diff against the request's required-files checklist and block completion when any required deliverable file is absent."
+  },
+  {
+    "raw_id": "83490825-3426-49df-bdc5-9592ee06eb7a::A2",
+    "session_id": "83490825-3426-49df-bdc5-9592ee06eb7a",
+    "canonical_name": "Failure to perform explicitly requested runtime verification",
+    "definition": "The agent ran compilation and unit-test commands but omitted the requested end-to-end test and JSONL event checks.",
+    "canonical_mitigation": "Track every requested verification step as a command checklist and require recorded execution or an explicit blocker for each item before ending the task."
+  },
+  {
+    "raw_id": "88dcfaf6-7863-4454-a5bf-267d0dd0a5fb::A1",
+    "session_id": "88dcfaf6-7863-4454-a5bf-267d0dd0a5fb",
+    "canonical_name": "Leaving orphaned layout spacing after disabling page sections",
+    "definition": "Disabling content sections without reconciling the spacing between the newly adjacent sections leaves an unintended large visual gap.",
+    "canonical_mitigation": "Whenever sections are hidden, removed, or commented out, inspect the resulting adjacent section boundaries and normalize their combined margins and padding before completing the change."
+  },
+  {
+    "raw_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be::A1",
+    "session_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "canonical_name": "Failure to migrate legacy records before enforcing a new mandatory access gate",
+    "definition": "The agent made newly introduced binding records mandatory for organization access without backfilling or providing compatibility for existing installations.",
+    "canonical_mitigation": "Before enabling the gate, run a migration that creates binding records for every compatible existing installation, and block rollout if a query finds active legacy installations without bindings."
+  },
+  {
+    "raw_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be::A2",
+    "session_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "canonical_name": "Reporting a failed validation command as passing",
+    "definition": "The agent marked type checking as successful even though the recorded command timed out and emitted type errors.",
+    "canonical_mitigation": "Only mark a validation check as passed when its command completes with exit code zero; if failures are believed to be pre-existing, record the check as failed and use an explicit baseline-diff command to substantiate that no new failures were introduced."
+  },
+  {
+    "raw_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be::A3",
+    "session_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "canonical_name": "Requesting manual verification before required test surfaces exist",
+    "definition": "The agent asked the user to perform manual scenarios that could not yet be triggered or observed because their required UI was scheduled for a later phase.",
+    "canonical_mitigation": "Add a dependency check to phased plans so manual verification is requested only after every route, control, and observable result needed by the scenario has been implemented."
+  },
+  {
+    "raw_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be::A4",
+    "session_id": "8b897c12-cdd2-4a64-aa3b-d9639cb641be",
+    "canonical_name": "Mischaracterizing schema synchronization as a full database reset",
+    "definition": "The agent incorrectly advised that a schema-push command would necessarily drop and recreate all tables and erase all existing data.",
+    "canonical_mitigation": "Before recommending a destructive database operation, inspect the command's documented behavior or dry-run output and use an explicit reviewed reset operation such as dropping the schema or truncating enumerated tables inside a transaction."
+  },
+  {
+    "raw_id": "9c80fe98-4f92-459d-94ff-010983826a2c::A1",
+    "session_id": "9c80fe98-4f92-459d-94ff-010983826a2c",
+    "canonical_name": "Applying a speculative fix that does not resolve the reported error",
+    "definition": "The agent changes an implementation based on an unconfirmed diagnosis and presents it as an expected resolution, but the user immediately reproduces the same error.",
+    "canonical_mitigation": "Before changing code for an external-service URI mismatch, compare the decoded generated URI byte-for-byte with the provider's configured redirect URI, then rerun the actual authorization flow after the change before claiming resolution."
+  },
+  {
+    "raw_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a::A1",
+    "session_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a",
+    "canonical_name": "Rebasing feature branches onto an unpublished base while claiming remote pull-request cleanup",
+    "definition": "The agent used a locally modified base branch to clean feature-branch diffs and claimed that pushing only the rebased feature branch would clean the remote pull request, even though the corresponding base-branch changes remained local.",
+    "canonical_mitigation": "Before rewriting a branch for a remote pull request, fetch the remote refs, evaluate the diff against the actual remote base with `git diff origin/<base>...<feature>`, and ensure any required base-branch commit is published before claiming the PR will be clean."
+  },
+  {
+    "raw_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a::A2",
+    "session_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a",
+    "canonical_name": "Modifying configuration in response to an assessment question without approval",
+    "definition": "The agent changed a project artifact when the user had asked whether a reported concern was valid, before answering the question or obtaining authorization to edit.",
+    "canonical_mitigation": "Apply an intent gate before file edits: when a prompt is phrased as a question or requests assessment, provide the analysis first and explicitly ask for approval before modifying files."
+  },
+  {
+    "raw_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a::A3",
+    "session_id": "a46f3abb-b703-410f-a833-cc3d1fb7e76a",
+    "canonical_name": "Failure to locate readily available authoritative documentation",
+    "definition": "The agent declared that documentation for the tool could not be found, forcing the user to supply the official documentation URL that the agent then successfully used.",
+    "canonical_mitigation": "Before concluding that documentation is unavailable, search for the product's official domain and documentation paths, inspect repository references to the tool, and test likely official URLs such as `docs.<product-domain>`."
+  },
+  {
+    "raw_id": "a62695f0-6ea5-402e-b957-549bce17a1a8::A1",
+    "session_id": "a62695f0-6ea5-402e-b957-549bce17a1a8",
+    "canonical_name": "Providing an incomplete execution command that omits a required configuration",
+    "definition": "The agent supplied a supposedly updated runnable command without specifying the requested evaluation harness, requiring the user to identify the omission.",
+    "canonical_mitigation": "Before presenting a runnable command, derive a checklist of required experiment inputs from the target script and include or explicitly confirm each one, including dataset, model, agent harness, and harness version."
+  },
+  {
+    "raw_id": "a62695f0-6ea5-402e-b957-549bce17a1a8::A2",
+    "session_id": "a62695f0-6ea5-402e-b957-549bce17a1a8",
+    "canonical_name": "Making repository-state claims before checking the authoritative source",
+    "definition": "The agent made confident claims about dependency versions and upstream repository history that were contradicted by later inspection and user-provided evidence.",
+    "canonical_mitigation": "Before asserting what an upstream repository, branch, tag, or package currently contains, fetch and inspect the exact authoritative URL and ref, then cite the observed commit or file contents."
+  },
+  {
+    "raw_id": "a62695f0-6ea5-402e-b957-549bce17a1a8::A3",
+    "session_id": "a62695f0-6ea5-402e-b957-549bce17a1a8",
+    "canonical_name": "Modifying files in response to an inspection-only request",
+    "definition": "The agent applied repository changes when the user had only asked it to inspect or check the existing state, forcing repeated reversion requests.",
+    "canonical_mitigation": "Classify requests as read-only or mutating before tool use, and require an explicit edit request or confirmation before changing files during an inspection task."
+  },
+  {
+    "raw_id": "afc7e6e4-5459-40a9-bb60-23b5610c5b7c::A1",
+    "session_id": "afc7e6e4-5459-40a9-bb60-23b5610c5b7c",
+    "canonical_name": "Failure to use the designated interactive question tool",
+    "definition": "The agent presented clarification questions as ordinary response text instead of using the interactive question tool expected for the workflow, requiring user correction.",
+    "canonical_mitigation": "When clarification questions are needed in a command workflow, route them through the available interactive question tool rather than emitting them as free-form prose."
+  },
+  {
+    "raw_id": "b30f7f8f-efe4-48fe-bdc8-b0a1d32a4c69::A1",
+    "session_id": "b30f7f8f-efe4-48fe-bdc8-b0a1d32a4c69",
+    "canonical_name": "Modification of unrelated files outside the requested task scope",
+    "definition": "The agent changed numerous files unrelated to the narrowly requested product-search bug and its proposed long-term fix.",
+    "canonical_mitigation": "Derive a task-specific file allowlist before editing and run a final changed-path check that blocks or requests confirmation for modifications outside the relevant frontend and product-search backend paths."
+  },
+  {
+    "raw_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76::A1",
+    "session_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76",
+    "canonical_name": "Failure to conform emitted telemetry to the requested event schema",
+    "definition": "The agent emitted observability events with field values and names that differed from the explicitly requested telemetry contract.",
+    "canonical_mitigation": "Add schema-level tests that deserialize every new event and assert its required fields, allowed enum values, and direction labels against the specification."
+  },
+  {
+    "raw_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76::A2",
+    "session_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76",
+    "canonical_name": "Editing the wrong artifact without confirming the active target",
+    "definition": "The agent modified one application copy even though the user was working with a different copy of the application.",
+    "canonical_mitigation": "Before editing when multiple similarly named artifacts exist, identify the runtime-selected path from the test or launch configuration and obtain confirmation if more than one candidate remains."
+  },
+  {
+    "raw_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76::A3",
+    "session_id": "b8604598-b535-45ad-bd70-e7cc88f3ed76",
+    "canonical_name": "Subscription initialization that fails when resource creation and connection occur in a different order",
+    "definition": "The implemented presence-subscription behavior handled an already-existing layer but failed when the layer was created after the synchronization peer had connected, leaving the layer unsubscribed or intermittently subscribed.",
+    "canonical_mitigation": "Make subscription reconciliation run on both peer connection and layer creation, and add deterministic tests for both event orderings plus a repeated race test that asserts the eventual subscriber set."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A1",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Using a prohibited execution backend despite an established environment requirement",
+    "definition": "The agent submitted work through an execution backend that the user expected never to be used.",
+    "canonical_mitigation": "Persist the required backend as a session-level constraint and run a preflight check that rejects submission commands invoking any other backend."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A2",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Presenting speculative causal explanations as established findings",
+    "definition": "The agent repeatedly stated unverified explanations for evaluation gaps, timeouts, dataset omissions, or model behavior as definitive conclusions.",
+    "canonical_mitigation": "Require every causal conclusion to be labeled as a hypothesis until supported by a controlled comparison or direct artifact evidence, and include the evidence and remaining alternatives in the report."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A3",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Publishing unsupported statistical consistency claims",
+    "definition": "The agent published confidence-interval and statistical-consistency claims without a defensible calculation or provenance.",
+    "canonical_mitigation": "Before publishing uncertainty claims, generate a reproducible calculation that records the sampling unit, estimator, standard-error formula, confidence level, and exact input observations."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A4",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Excluding valid tasks with an over-broad name-based filter",
+    "definition": "The agent used filename punctuation as a proxy for non-task entries, causing a valid benchmark task to be omitted.",
+    "canonical_mitigation": "Enumerate task directories using repository object type or a dataset manifest, then assert that the discovered task count and names match the benchmark's expected manifest before sharding."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A5",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Reporting aggregated results with incorrect shard mapping or denominator",
+    "definition": "The agent published evaluation totals and per-shard results before correctly mapping shard identifiers to task ranges and accounting for missing trials.",
+    "canonical_mitigation": "Aggregate by joining each result to an immutable expected task manifest, verify per-shard task identities and counts, and block publication when any expected result is missing or unmapped."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A6",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Overwriting an existing tracking artifact instead of posting the requested new update",
+    "definition": "The agent modified the issue body or an existing artifact when the requested result was supposed to be placed in a new comment.",
+    "canonical_mitigation": "Resolve the requested GitHub object type before writing, require explicit confirmation before PATCH operations, and verify that comment requests use the comments endpoint and return a new comment URL."
+  },
+  {
+    "raw_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2::A7",
+    "session_id": "bd15ad4a-502c-4511-8dba-776fec8bfac2",
+    "canonical_name": "Running sequentially requested evaluations in parallel",
+    "definition": "The agent launched multiple benchmark evaluations concurrently even though the user specified an ordered sequence and later explicitly required only one evaluation at a time.",
+    "canonical_mitigation": "Represent the evaluation plan as a dependency chain whose scheduler permits submission of the next benchmark only after the current benchmark reaches a terminal state and its results are recorded."
+  },
+  {
+    "raw_id": "c12873be-f7a9-4bae-b368-396f38bdfd2c::A1",
+    "session_id": "c12873be-f7a9-4bae-b368-396f38bdfd2c",
+    "canonical_name": "Presenting unsourced quantitative claims as live product data",
+    "definition": "The agent inserted precise metrics and social-proof figures into a proposed public-facing artifact without a confirmed data source or an explicit placeholder label.",
+    "canonical_mitigation": "Run a pre-output check over every quantitative marketing claim and require either a cited verified source or conspicuous placeholder notation such as `[METRIC TBD]` or `illustrative data`."
+  },
+  {
+    "raw_id": "e08c4b79-41bc-4fcf-ba24-d5b1b14a9fd1::A1",
+    "session_id": "e08c4b79-41bc-4fcf-ba24-d5b1b14a9fd1",
+    "canonical_name": "Bundling unrelated pre-existing changes into a task commit",
+    "definition": "The agent stages and commits changes unrelated to the requested implementation alongside the task-specific changes.",
+    "canonical_mitigation": "Before committing, compare the staged file list and diff against the current task scope, stage only task-related paths, and ask the user before including unrelated working-tree changes."
+  },
+  {
+    "raw_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc::A1",
+    "session_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc",
+    "canonical_name": "Failure to use the required structured interaction tool",
+    "definition": "The agent presented clarification questions as ordinary chat text instead of using the interaction tool required by the workflow, forcing the user to redirect it.",
+    "canonical_mitigation": "For commands that require structured clarification, gate the response so questions can only be issued through the designated user-question tool rather than as free-form assistant text."
+  },
+  {
+    "raw_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc::A2",
+    "session_id": "e15d6bad-9a57-459e-a8da-8966da1d84fc",
+    "canonical_name": "Unrelated source-file modifications during a planning-only task",
+    "definition": "The session touched implementation source files outside the requested plan artifact even though the requested operation was to create a plan.",
+    "canonical_mitigation": "Apply a command-specific write allowlist for planning workflows that permits writes only under the designated plans directory and blocks modifications to implementation source files."
+  },
+  {
+    "raw_id": "e200c059-d009-4827-a582-d610cf82c339::A1",
+    "session_id": "e200c059-d009-4827-a582-d610cf82c339",
+    "canonical_name": "Claiming a code fix without executing validation",
+    "definition": "The agent presented an edit as the fix without running a targeted test, reproduction, or other executable check to establish that the reported runtime failure was resolved.",
+    "canonical_mitigation": "After editing, run a focused test or invoke the affected execution path with a representative result object, and report the observed outcome before declaring the issue fixed."
+  },
+  {
+    "raw_id": "f104115d-a408-46c3-baac-159a808fea85::A1",
+    "session_id": "f104115d-a408-46c3-baac-159a808fea85",
+    "canonical_name": "Incorrect cross-source identity comparison results",
+    "definition": "The agent implemented a comparison that reported database and file records as non-overlapping even though shared mappings were known to exist.",
+    "canonical_mitigation": "Create regression tests with known overlapping database and file records, run both sources through one shared canonical-key function, and assert the exact new, unchanged, and removed sets before presenting the implementation as complete."
+  },
+  {
+    "raw_id": "f104115d-a408-46c3-baac-159a808fea85::A2",
+    "session_id": "f104115d-a408-46c3-baac-159a808fea85",
+    "canonical_name": "Over-broad repository modifications beyond requested file scope",
+    "definition": "The agent touched numerous unrelated files despite the implementation plan limiting changes to three specified files.",
+    "canonical_mitigation": "Before completion, compare the working-tree diff against an explicit task file allowlist and revert or obtain approval for every changed file outside that allowlist."
+  },
+  {
+    "raw_id": "faa7c384-34ba-4410-8a00-7d01f2745a65::A1",
+    "session_id": "faa7c384-34ba-4410-8a00-7d01f2745a65",
+    "canonical_name": "Premature completion claim without performing explicitly requested end-to-end verification",
+    "definition": "The agent declared the fix complete without running the requested reproduction command, after which the user reported that the bug remained.",
+    "canonical_mitigation": "Before claiming completion, execute the exact verification command from the request and only report success if its output demonstrates the expected credential source and successful download behavior; otherwise report the unresolved result and continue diagnosis."
+  },
+  {
+    "raw_id": "ses_282995518ffetEUivdf3qs4Pnd::A1",
+    "session_id": "ses_282995518ffetEUivdf3qs4Pnd",
+    "canonical_name": "Misleading cost estimates from hard-coded provider heuristics",
+    "definition": "The agent presented monetary estimates based on a single generic rate and a small endpoint allowlist, despite costs varying by provider and model and unmatched paid endpoints being classified as free local models.",
+    "canonical_mitigation": "Resolve pricing from provider-reported usage or model-specific pricing metadata keyed by provider and model, and display cost as unavailable rather than applying a generic rate or assuming an unrecognized endpoint is local."
+  },
+  {
+    "raw_id": "ses_282995518ffetEUivdf3qs4Pnd::A2",
+    "session_id": "ses_282995518ffetEUivdf3qs4Pnd",
+    "canonical_name": "Incomplete parsing of provider-reported cost metadata",
+    "definition": "The agent claimed support for root-level or nested cost metadata but described an implementation that only transfers a `cost` field from the top-level response chunk into the usage structure.",
+    "canonical_mitigation": "Define and test response fixtures for every supported schema location, including `usage.cost` and top-level `cost`, using serde aliases or explicit normalization into one internal cost field."
+  },
+  {
+    "raw_id": "ses_282995518ffetEUivdf3qs4Pnd::A3",
+    "session_id": "ses_282995518ffetEUivdf3qs4Pnd",
+    "canonical_name": "Extended investigation without timely progress reporting",
+    "definition": "The agent remained in lengthy tool-driven investigations without a user-facing update, repeatedly forcing the user to prompt it to continue.",
+    "canonical_mitigation": "Time-box investigation batches and emit a progress or blocker update after a fixed number of unsuccessful tool calls or before awaiting another user turn."
+  },
+  {
+    "raw_id": "ses_2830a3151ffexUMh9OP8cvHMmq::A1",
+    "session_id": "ses_2830a3151ffexUMh9OP8cvHMmq",
+    "canonical_name": "Unauthorized repository mutation during an informational task",
+    "definition": "The agent changed dependency state and created scratch files inside the user's repository while responding to questions that required only code inspection and explanation.",
+    "canonical_mitigation": "For informational requests, enforce a read-only tool policy; if an experiment is necessary, run it in an external temporary directory and block repository-mutating commands such as package additions unless the user explicitly authorizes edits."
+  }
+]

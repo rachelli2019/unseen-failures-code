@@ -1,0 +1,17 @@
+{
+  "source_responses": "data/api_responses/primary_failure_mode_oneshot_test993/responses_gpt-5.6-sol.jsonl",
+  "representation": "primary",
+  "sessions": 993,
+  "sessions_with_failure": 738,
+  "total_modes": 738,
+  "splits": {
+    "dev": 0,
+    "test": 993
+  },
+  "skipped_error_rows": [
+    {
+      "session_id": "ses_2b1e7263effem1AkVdcfxcG3da",
+      "error": "{\"id\": \"batch_req_6ab0a669559081908a7e26190c428006\", \"custom_id\": \"ses_2b1e7263effem1AkVdcfxcG3da\", \"response\": {\"status_code\": 400, \"request_id\": \"0e3ff692-ec5f-481a-ac4d-83c4a8c68426\", \"body\": {\"error\": {\"message\": \"Your input exceeds the context window of this model. Please adjust your input and try again.\", \"type\": \"invalid_request_error\", \"param\": \"input\", \"code\": \"context_length_exceeded\"}}}, \"error\": null}"
+    }
+  ]
+}

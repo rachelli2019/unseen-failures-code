@@ -1,0 +1,16 @@
+{
+  "source_scores": "data/processed/swe_chat_sessions_judge_ready_full.parquet",
+  "source_failure_mode_jsonl": [
+    "data/failure_modes/primary_dev40.jsonl",
+    "data/failure_modes/primary_test993.jsonl"
+  ],
+  "threshold": 70.0,
+  "sessions_total": 5055,
+  "sessions_with_ground_truth": 5046,
+  "ground_truth_unsafe": 770,
+  "ground_truth_safe": 4276,
+  "unavailable": 9,
+  "unavailable_reasons": {
+    "below threshold but no failure-mode judgment available": 9
+  }
+}

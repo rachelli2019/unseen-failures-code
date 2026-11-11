@@ -1,0 +1,97 @@
+{
+  "setting": "Set-valued failure modes",
+  "prefix": "set_valued",
+  "grid_npz": "artifacts/lambda_grid_mixture/set_valued_fullpop_s888_K100/combined/trajectories.npz",
+  "closed_form_npz": "artifacts/closed_form_mixture/set_valued_fullpop_s888_cf/combined/trajectories.npz",
+  "fixed_npz": "artifacts/lambda_grid_mixture/set_valued_fullpop_s888_K100/combined/trajectories.npz",
+  "n_trials": 1000,
+  "horizon": 3000,
+  "report_times": [
+    100,
+    300,
+    1000,
+    2000,
+    3000
+  ],
+  "oracle_mean": [
+    0.1529294497077202,
+    0.14202942955049386,
+    0.1148752267687966,
+    0.08845071558153597,
+    0.06951118726063293
+  ],
+  "arms": {
+    "Fixed $\\lambda = 0.25$": {
+      "source": "artifacts/lambda_grid_mixture/set_valued_fullpop_s888_K100/combined/trajectories.npz:bound__single_lambda_0p25",
+      "simultaneous_coverage": 0.99,
+      "mean": [
+        0.30081137466430663,
+        0.2086773509979248,
+        0.16285914325714113,
+        0.13669484233856202,
+        0.11453527736663818
+      ],
+      "ratio_to_grid": [
+        1.1185397884388877,
+        0.9690850436712032,
+        0.962290880050328,
+        0.9814441268766048,
+        0.9869970335420415
+      ]
+    },
+    "$\\lambda$ grid, $K=100$": {
+      "source": "artifacts/lambda_grid_mixture/set_valued_fullpop_s888_K100/combined/trajectories.npz:bound__uniform_K100",
+      "simultaneous_coverage": 0.975,
+      "mean": [
+        0.2704428567886353,
+        0.21539943504333497,
+        0.16922576427459718,
+        0.1393001937866211,
+        0.11608676052093506
+      ],
+      "ratio_to_grid": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "Closed-form $\\lambda$": {
+      "source": "artifacts/closed_form_mixture/set_valued_fullpop_s888_cf/combined/trajectories.npz:bound__closed_form_lambda",
+      "simultaneous_coverage": 0.999,
+      "mean": [
+        0.32580574989353694,
+        0.24807124710133394,
+        0.18694330406251575,
+        0.15196555519173607,
+        0.12690386390760652
+      ],
+      "ratio_to_grid": [
+        1.209473993558756,
+        1.1529823219487239,
+        1.1050012213232312,
+        1.0912036622624637,
+        1.0936887204097048
+      ]
+    },
+    "Best in hindsight (cheating)": {
+      "source": "artifacts/closed_form_mixture/set_valued_fullpop_s888_cf/combined/trajectories.npz:bound__closed_form_lambda_cheating",
+      "simultaneous_coverage": 0.897,
+      "mean": [
+        0.25633598041583155,
+        0.20461450862943598,
+        0.16203644943304898,
+        0.1340879411704706,
+        0.11213103675919857
+      ],
+      "ratio_to_grid": [
+        0.9467027145571915,
+        0.9496440279437823,
+        0.9574439525217597,
+        0.9625638906180264,
+        0.9658949317602756
+      ]
+    }
+  }
+}

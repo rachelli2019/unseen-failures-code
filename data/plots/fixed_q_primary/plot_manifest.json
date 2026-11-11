@@ -1,0 +1,125 @@
+{
+  "source_run": "artifacts/fixed_q_primary/length_half_v1",
+  "figures": [
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/simultaneous_coverage.pdf",
+      "destination": "data/plots/fixed_q_primary/simultaneous_coverage.pdf",
+      "sha256": "592b2455ebe9d5d74f7b86999458294bac9471b193398949fbc134361d4bc5af"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/simultaneous_coverage.png",
+      "destination": "data/plots/fixed_q_primary/simultaneous_coverage.png",
+      "sha256": "d2ecdbcb375da34e837cf9189fc1f83445d93c2ebe4fa72e530637dc17bb3b4a"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_times.pdf",
+      "sha256": "8d4abed05b02cf75eae50cad6b4e89cdc325a9a52e0ed33862d6d9cfbd83cc7e"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times.png",
+      "destination": "data/plots/fixed_q_primary/stopping_times.png",
+      "sha256": "ca59b73c83e4d44ae9793eac0ce6fc01cfae3567db1fcacf5ded9a22710d70b6"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.01.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.01.pdf",
+      "sha256": "7fef5d23b85c2fc756f293cf463505ed24a51f35ab7ec956b60b665abdc957de"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.01.png",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.01.png",
+      "sha256": "540460138738c641347fd86dc539d470bfee4df15e8ba18a5247d9eb53c1160a"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.05.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.05.pdf",
+      "sha256": "228fea2e744a1a2cc15c984c08c0b37543bc1fcc6b77e5470334888566279328"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.05.png",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.05.png",
+      "sha256": "f4ec396ba41ac0a4a4eb3f0e85a84dac3139103822c9c70339bbbbe229881e40"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.1.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.1.pdf",
+      "sha256": "9fd5d7c185180c53b8e7d075da0898eac8d6194a4cd1f019cb561dcaeda81943"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_times_epsilon_0.1.png",
+      "destination": "data/plots/fixed_q_primary/stopping_times_epsilon_0.1.png",
+      "sha256": "f03c52a05305d87e02d757db7c4718c8aa468cc0128be768e85d2e05d11c1978"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds.pdf",
+      "destination": "data/plots/fixed_q_primary/upper_bounds.pdf",
+      "sha256": "66ce5c16d20fb6938a7703bf215adadd3f4c2837cd8df3b5732efe339f2a66c4"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds.png",
+      "destination": "data/plots/fixed_q_primary/upper_bounds.png",
+      "sha256": "135342056c4b8ce16a455ea01f5624c09556179ef33c6519249edd20c423e5fe"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds_P.pdf",
+      "destination": "data/plots/fixed_q_primary/upper_bounds_P.pdf",
+      "sha256": "57b42bf77b5cf0373800c212548336d1438dc72cc94b1b216d5998a6588e79b6"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds_P.png",
+      "destination": "data/plots/fixed_q_primary/upper_bounds_P.png",
+      "sha256": "d2768b7a06786fbcb825afeb431573e0426275976ddf0aab71d0207fc6a35681"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds_Q.pdf",
+      "destination": "data/plots/fixed_q_primary/upper_bounds_Q.pdf",
+      "sha256": "67c870cc64de04758882244e1ebe84afe5b521ae066da3548b0deb1e872d7b7f"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/upper_bounds_Q.png",
+      "destination": "data/plots/fixed_q_primary/upper_bounds_Q.png",
+      "sha256": "cfaaf8515fa97d4aa3a1e6f9670adffb0305f9726224e348ca4e900440809480"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times.pdf",
+      "sha256": "8126826cd6bb858df61bdf3a239d029ad6c7760adee7539334bb555c437fe2e2"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times.png",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times.png",
+      "sha256": "e266e10fe0c29c371fd41c528cde19640ae47c70ebe17eaeb429f833ceea9ca4"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.01.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.01.pdf",
+      "sha256": "2d4b9aa7df776d2d81a6a6627c9d8a6d92261f70ba506e3c7d237ef3cd3608c1"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.01.png",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.01.png",
+      "sha256": "499b6767b8d5c1e49d64c0c927413533d4bf1a3d85252293bd2f65c63f303ef9"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.05.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.05.pdf",
+      "sha256": "b5f9c89098c6d2faf9bb0b8501e2262452af6418aa7dca5794da41037edade79"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.05.png",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.05.png",
+      "sha256": "a22e14a24abcd0112b17e336b13fbf800ad7a6d52b9729412a1447233430a1ad"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.1.pdf",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.1.pdf",
+      "sha256": "f7fbe0f6f1cfcb66263c9adc6c44942f3e67a5e61bae9c0c66802b79022962ca"
+    },
+    {
+      "source": "artifacts/fixed_q_primary/length_half_v1/stopping_h30000/stopping_times_epsilon_0.1.png",
+      "destination": "data/plots/fixed_q_primary/stopping_h30000/stopping_times_epsilon_0.1.png",
+      "sha256": "36356504bff7f4c34197c0f02fdab0350bde3b0145ac10960f7ff3af7d2fead8"
+    }
+  ]
+}

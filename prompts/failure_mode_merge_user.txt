@@ -1,0 +1,5 @@
+Canonicalize the following {{n_candidates}} candidate failure-mode labels into a final taxonomy.
+
+<CANDIDATES>
+{{candidates}}
+</CANDIDATES>

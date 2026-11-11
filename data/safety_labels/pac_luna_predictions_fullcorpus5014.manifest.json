@@ -1,0 +1,8 @@
+{
+  "model": "gpt-5.6-luna",
+  "source_responses": "/tmp/pac_recovery/luna_fullcorpus_from_main.jsonl.gz",
+  "sessions": 5013,
+  "predicted_unsafe": 1031,
+  "predicted_safe": 3982,
+  "skipped": 1
+}
